@@ -19,11 +19,30 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/users', [userController::class, 'listAllUsers'])->name('listUsers'); //-> da nome
-Route::get('/users/create', [userController::class, 'createUser'])->name('createUser');
-Route::get('/users/id', [userController::class, 'listUsersByID'])->name('listUsersByID');
-Route::get('/users/id/edit', [userController::class, 'updateUser'])->name('updateUser'); 
-Route::get('/users/id/delete', [userController::class, 'deleteUser'])->name('deleteUser');
 
-Route::get('/auth/login', [AuthController::class, 'login'])->name('login');
-Route::get('/auth/logout', [AuthController::class. 'logout'])->name('logout');
+Route::get('/auth', [AuthController::class, 'showAuthForm'])->name('auth');
+//Route::match (['get', 'post'], '/login', [AuthController:: class, 'loginUser'])->name('login');
+Route::post ('/auth', [AuthController:: class, 'loginUser'])->name('login');
+//novos ----
+Route::post('/register', [UserController::class, 'registerUser'])->name('register');
+//Route::match(['get', 'post'], '/register', [UserController::class, 'register'])->name('register');
+Route::get('/users/profile', [UserController::class, 'profileUser'])->name('profileUser');
+Route::get('/logout', [AuthController::class, 'logoutUser'])->name('logout');
+
+//UserController
+Route::match (
+    ['get', 'post'],
+    '/register',
+    [UserController::class, 'registerUser']
+)->name('register');
+Route::middleware('auth')->group(function () {
+    Route::get('/users', [UserController::class, 'listAllUsers'])->name('listAllUsers');
+    Route::get('/users/{uid}', [UserController::class, 'listUser'])->name('listUser');
+    
+    Route::put('/users/{uid}/edit', [UserController::class, 'updateUser'])->name('updateUser');
+    
+   
+    Route::delete('/users/{uid}/delete', [UserController::class, 'deleteUser'])->name('deleteUser');
+});
+
+    

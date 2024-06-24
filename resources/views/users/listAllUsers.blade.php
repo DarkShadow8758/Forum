@@ -6,13 +6,19 @@
 
     <table border = "1">
         <tr> 
-            <td>Nome</td>
-            <td>Email</td>
+            <td>Name</td>
+            <td>E-mail</td>
+            <td>Options</td>
         </tr>
+        @foreach ($users as $user)
         <tr>
-            <td>Fulano</td>
-            <td>fulano@gmail.com</td>
+           
+            <td>{{$user->name}}</td>
+            <td>{{$user->email}}</td>
+            <td><input type="submit" value="Banish" id="submit-button"></td>
+           
         </tr>
+        @endforeach
 
 
 

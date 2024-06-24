@@ -17,7 +17,7 @@
             </div>
             <div class="form-group">
                 <label for ="password">Senha:</label>
-                <input type = "text" id = "password" naame = "password" required>
+                <input type = "text" id = "password" name = "password" required>
             </div>
             <div class="form-group">
                 <button type ="submit">Enviar</button>
