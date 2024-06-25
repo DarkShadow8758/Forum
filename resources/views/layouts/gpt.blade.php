@@ -23,7 +23,7 @@
       </li>
       @if(Auth::check())
       <li>
-        <a href="{{route('listUser', [Auth::user()->id])}}">
+      <a href="{{url('/users/profile')}}">
           <span class="icon"><i class="fa-solid fa-user"></i></span>
           <span class="title">Profile {{ Auth::user()->name }}</span>
         </a>
@@ -38,23 +38,26 @@
       </li>
       @endif
       <li>
-        <a href="#">
+        <a href="{{url('/createPost')}}">
           <span class="icon"><i class="fa-solid fa-comment"></i></span>
           <span class="title">Posts</span>
         </a>
       </li>
       <li>
-        <a href="{{url('/register')}}">
+        <a href="{{url('/help')}}">
           <span class="icon"><i class="fa-solid fa-circle-question"></i></span>
           <span class="title">Help!</span>
         </a>
       </li>
+      @if(Auth::check())
       <li>
-        <a href="{{url('/users/profile')}}">
+      
+      <a href="{{route('listUser', [Auth::user()->id])}}">
           <span class="icon"><i class="fa-solid fa-gear"></i></span>
-          <span class="title">Config</span>
+          <span class="title">Edit Profile</span>
         </a>
       </li>
+      @endif
       <li>
         <a href="{{url('/users')}}">
           <span class="icon"><i class="fa-solid fa-lock"></i></span>

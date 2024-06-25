@@ -3,21 +3,24 @@
 @section('header', 'Listar todos os usuários')
 
 @section('content')
-
-    <table border = "1">
+<div class="container-listUsers">
+    <table class="table-listUsers" border = "1">
         <tr> 
-            <td>Name</td>
-            <td>E-mail</td>
-            <td>Options</td>
+            <th>Name</th>
+            <th>E-mail</th>
+            <th colspan="2">Options</th>
         </tr>
         @foreach ($users as $user)
-        <tr>
+        <tr class="item-listUsers">
            
-            <td>{{$user->name}}</td>
-            <td>{{$user->email}}</td>
-            <td><input type="submit" value="Banish" id="submit-button"></td>
+            <td class="center">{{$user->name}}</td>
+            <td class="right">{{$user->email}}</td>
+            <td><button class="green">Suspend</button></td>
+            <td><button>Banish</bu</td>
            
         </tr>
+</div>
+
         @endforeach
 
 

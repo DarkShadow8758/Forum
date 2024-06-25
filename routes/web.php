@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,7 +18,7 @@ use App\Http\Controllers\AuthController;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome'); 
 
 
 Route::get('/auth', [AuthController::class, 'showAuthForm'])->name('auth');
@@ -28,7 +29,7 @@ Route::post('/register', [UserController::class, 'registerUser'])->name('registe
 //Route::match(['get', 'post'], '/register', [UserController::class, 'register'])->name('register');
 Route::get('/users/profile', [UserController::class, 'profileUser'])->name('profileUser');
 Route::get('/logout', [AuthController::class, 'logoutUser'])->name('logout');
-
+Route::get('/help', [UserController::class, 'help'])->name('help');
 //UserController
 Route::match (
     ['get', 'post'],
@@ -41,8 +42,9 @@ Route::middleware('auth')->group(function () {
     
     Route::put('/users/{uid}/edit', [UserController::class, 'updateUser'])->name('updateUser');
     
-   
-    Route::delete('/users/{uid}/delete', [UserController::class, 'deleteUser'])->name('deleteUser');
+    //Route::delete('/users/{uid}/delete', [UserController::class, 'deleteUser'])->name('deleteUser');
+    Route::match(['get', 'delete'],'/users/{uid}/delete', [UserController::class, 'deleteUser'])->name('deleteUser');
+    Route::match(['get', 'put'], '/createPost', [PostController::class, 'createPost'])->name('createPost');
 });
 
     

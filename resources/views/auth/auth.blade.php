@@ -18,7 +18,7 @@
                 @csrf
                 <label for="chk" aria-hidden="true">Sign up</label>
                 <input type="text" id="name" name="name" placeholder="User name" value = "{{old ('name')}}" required="">
-                <input type="email" id="email" name="email" placeholder="Email" value = "{{old ('email')}}" required="">
+                <input type="email" id="email" name="email" placeholder="E-mail" value = "{{old ('email')}}" required="">
                 @error('email') <span>{{ $message }}</span> @enderror
                 <input type="password" id="password" name="password" placeholder="Password" value = "{{old ('password')}}" required="">
                 @error('password') <span>{{ $message }}</span> @enderror
@@ -31,7 +31,7 @@
             <form action="{{ route('login')}}" method="POST">
             @csrf
                 <label for="chk" aria-hidden="true">Login</label>
-                <input type="email" id="email" name="email" placeholder="Email" value="{{ old('email') }}" required="">
+                <input type="email" id="email" name="email" placeholder="E-mail" value="{{ old('email') }}" required="">
                 @error('email') <span>{{$message}}</span> @enderror
                 <input type="password" id="password" name="password" placeholder="Password" required="">
                 <button>Login</button>

@@ -1,6 +1,15 @@
 @extends('layouts.gpt')
 
 @section('content')
+@if (Session::has('sucess'))
+<p>{{Session('sucess')}}</p>
+@endif
+@if (Session::has('message'))
+<p>{{Session('message')}}</p>
+@endif
+@if (Session::has('success'))
+<p>{{Session::has('sucess')}}</p>
+@endif
 <div class="search-box">
     <input class="search-txt" type="text" name="" placeholder="Search">
     <a class="search-btn" href="#"> <i class="fas fa-search"> </i> </a>
@@ -96,5 +105,25 @@
     <div class="tooltip">Youtube</div>
   </li>
 </ul>
+
+
+<section class="swiper  mySwiper">
+  <div class="swiper-wrapper">
+    <div class="card swiper-slide">
+      <div class="card__image">
+        <img src="{{asset ('img/user.jpeg')}}" alt="card image">
+      </div>
+      <div class="card__content">
+        <span class="card__title">Web Designer</span>
+        <span class="card__name">Giovana Cabello</span>
+        <p class="card__text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sunt, nam eius
+          <button class="card__btn">More</button>
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
 
 @endsection

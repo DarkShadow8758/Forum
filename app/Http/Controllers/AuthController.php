@@ -20,11 +20,11 @@ class AuthController extends Controller
         ]);
 
         if (Auth::attempt($credentials)) {
-            return redirect()->route('listAllUsers');
+            return redirect()->route('welcome')->with('sucess', 'Login successful!');
         }
 
         return back()->withErrors([
-            'email' => 'Credenciais inválidas.',
+            'email' => 'Invalid credentials.',
         ])->withInput();
     }
 
@@ -34,7 +34,7 @@ class AuthController extends Controller
     public function logoutUser(Request $request) 
     {
         Auth::logout();
-        return redirect()->route('auth')->with('sucess', 'Logout realizado com sucesso'); 
+        return redirect()->route('auth')->with('sucess', 'Logout sucessful!'); 
         
     }
 }

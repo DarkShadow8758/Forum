@@ -20,11 +20,14 @@
     <input type="password" id="password_confirmation" name="password_confirmation" placeholder="Senha de Confirmação" >
     <!--<input type="text" id="datepicker" placeholder="Data de Nascimento" required title="Preencher o campo">-->
     <input type="submit" value="Edit" id="submit-button">
-    <form id="registration-form" action="{{ route('deleteUser', [$user->id]) }}" method="post" >
+    </form>
+    
+    <form id="delete-form" action="{{ route('deleteUser', [$user->id]) }}" method="delete" >
     @csrf
     @method('delete')
-    <input type="submit" value="Deletar" id="submit-button">
-  </form>
+    <input type="submit" value="Deletar"  id="submit-button">
+    
+  
   </form>
  
   
